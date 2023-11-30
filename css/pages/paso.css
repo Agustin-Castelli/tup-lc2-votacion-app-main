@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --magenta: #ee3d8f;
+    --celeste: #37bbed;
+    --morado: #9283be;
+    --gris-claro: #9e9e9e;
+    --titulos: #333;
+    --textos: #333;
+    --fondo-pantalla: rgb(235, 245, 251);
+    --fondo-Cabecera: #18a0fb;
+    --fondo-Footer: #333;
+    --fondo-Menu: #333;
+    --texto-footer: #9e9e9e;
+    --titulo-Grilla: #727272;
+    --borde-inferior-Grilla: #727272;
+    --borde-Grilla: #c5c5c5;
+    --grafica-amarillo: rgb(252, 210, 0);
+    --grafica-amarillo-claro: rgba(252, 210, 0, 0.3);
+    --grafica-celeste: rgb(0, 169, 232);
+    --grafica-celeste-claro: rgba(0, 169, 232, 0.3);
+    --grafica-bordo: rgb(171, 40, 40);
+    --grafica-bordo-claro: rgba(171, 40, 40, 0.3);
+    --grafica-lila: rgb(112, 76, 159);
+    --grafica-lila-claro: rgba(112, 76, 159, 0.5);
+    --grafica-lila2: rgb(77, 46, 110);
+    --grafica-lila2-claro: rgba(77, 46, 110, 0.5);
+    --grafica-gris: rgb(128, 128, 128);
+    --grafica-gris-claro: rgb(128, 128, 128, 0.5);
+    --grafica-verde: rgb(102, 171, 60);
+    --grafica-verde-claro: rgba(102, 171, 60, 0.5);
+    --mensaje-usuario-amarillo: #ffc107;
+    --mensaje-usuario-verde: #28a745;
+    --mensaje-usuario-rojo: #dc3545;
+    }
+
+ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.filtrar-button {
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 5px;
+    font: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--textos);
+}
+
+.generales-button{
+    background-color: var(--celeste);
+    border-radius: 5px;
+    padding: 5px 15px 5px 15px;
+    color: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 13px;
+    margin-left: 13px;
+}
+
+.generales-button:hover{
+    background-color: var(--gris-claro);
+}
+
+.informes-button{
+    border-radius: 15px;
+    border: solid 1px white;
+    padding: 5px 15px 5px 15px;
+    color: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 13px;
+}
+
+.informes-button:hover{
+    background-color: var(--gris-claro);
+}
+
+.inicio-button {
+    background-color: var(--gris-claro);
+    border-radius: 5px;
+    padding: 5px 15px 5px 15px;
+    color: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: end;
+}
+
+.inicio-button:hover {
+    color: var(--textos);
+}
+
+.div-button {
+    margin-right: 20px;
+}
+
+
+.selects {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 30px;
+    padding: 5px;
+    color: var(--celeste);
+    font-weight: bold;
+}
+
+.success-button {
+    background-color: var(--mensaje-usuario-verde);
+    width: 400px;
+    height: auto;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    color: #FFffFF;
+    font-size: 12px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.success-button p{
+    color: #FFffFF;
+}
+
+.error-button {
+    background-color: var(--mensaje-usuario-rojo);
+    width: 400px;
+    height: auto;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    color: #FFffFF;
+    font-size: 12px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.error-button p{
+    color: #FFffFF;
+}
+
+.info-button {
+    background-color: var(--mensaje-usuario-amarillo);
+    width: 400px;
+    height: auto;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    color: #FFffFF;
+    font-size: 12px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.info-button p{
+    color: #FFffFF;
+}
+
+#sec-titulo p{
+    font-size: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--celeste);
+}
+
+#sec-contenido {
+    display: flex;
+    align-items: center;
+}
+
+.agregar-button {
+    background-color: var(--gris-claro);
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.agregar-button:hover {
+    color: var(--textos);
+}
+
+#mesas_escrutadas_div {
+    display: flex;
+    background-color: var(--celeste);
+    border-radius: 10px;
+    margin: 15px;
+    width: 184px;
+    height: 70px;
+    padding: 0.5rem 1rem;
+    color: #FFF;
+    font-size: 12px;
+    justify-content: left;
+    align-items: center;
+}
+
+#electores_div {
+    display: flex;
+    background-color: var(--magenta);
+    border-radius: 10px;
+    margin: 15px;
+    width: 184px;
+    height: 70px;
+    padding: 0.5rem 1rem;
+    color: #FFF;
+    font-size: 12px;
+    justify-content: left;
+    align-items: center;
+}
+
+#participacion_div {
+    display: flex;
+    background-color: var(--morado);
+    border-radius: 10px;
+    margin: 15px;
+    width: 184px;
+    height: 70px;
+    padding: 0.5rem 1rem;
+    color: #FFF;
+    font-size: 12px;
+    justify-content: left;
+    align-items: center;
+}
+
+strong{
+    font-size: 14px;
+    margin-top: 40px;
+    color: white; 
+}
+
+#cuadro_detalle{
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ gap: 30px;
+}
+
+.card1, .card2, .card3{
+    border-radius: 25px;
+    border: 1px var(--borde-Grilla) solid;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+    min-width: 350px;
+}
+
+.card1 h3, .card2 h3, .card3 h3{
+    font-weight: bold;
+    padding: 1.8em 0 0 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.card1 {
+    background-color: #f4f4f4;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-div {
+    padding: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.card1 p {
+    font-size: 11px;
+    color: var(--textos);
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+.card1 div {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.progress {
+    height: 20px;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    position: relative;
+    margin: 5px 0;
+    background-color: #ccc;
+    }
+.progress-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: width 0.25s;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--grafica-amarillo); /* Color de la barra de progreso */
+    color: white;
+    justify-content: center;
+}
+.progress-bar-text {
+    margin-left: 10px;
+    font-weight: bold;
+    color: var(--textos);
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-wrap {
+    --chart-width: 260px;
+    --grid-color: #aaa;
+    --bar-thickness: 25px;
+    --bar-rounded: 3px;
+    --bar-spacing: 10px;
+    font-family: sans-serif;
+    width: var(--chart-width);
+    }
+
+.chart-wrap .title {
+    font-weight: bold;
+    padding: 1.8em 0 2.8em;
+    text-align: center;
+    white-space: nowrap;
+    }
+    /* cuando definimos el gráfico en horizontal, lo giramos 90 grados */
+.chart-wrap.horizontal .grid {
+    transform: rotate(-90deg);
+    }
+
+.chart-wrap.horizontal .bar::after {
+    /* giramos las letras para horizontal*/
+    transform: rotate(45deg);
+    padding-top: 0px;
+    display: block;
+    }
+
+.chart-wrap .grid {
+    margin-left: 50px;
+    position: relative;
+    padding: 5px 0 5px 0;
+    height: 100%;
+    width: 100%;
+    border-left: 2px solid var(--grid-color);
+    font-size: 10px;
+    }
+
+    /* posicionamos el % del gráfico*/
+.chart-wrap .grid::before {
+    font-size: 0.8em;
+    font-weight: bold;
+    content: '0%';
+    position: absolute;
+    left: -0.5em;
+    top: -1.5em;
+    }
+
+.chart-wrap .grid::after {
+    font-size: 0.8em;
+    font-weight: bold;
+    content: '100%';
+    position: absolute;
+    right: -1.5em;
+    top: -1.5em;
+    }
+
+    /* giramos las valores de 0% y 100% para horizontal */
+.chart-wrap.horizontal .grid::before, .chart-wrap.horizontal .grid::after {
+    transform: rotate(90deg);
+    }
+    
+.chart-wrap .bar {
+    width: var(--bar-value);
+    height: var(--bar-thickness);
+    margin: var(--bar-spacing) 0;
+    background-color: var(--bar-color);
+    border-radius: 0 var(--bar-rounded) var(--bar-rounded) 0;
+    }
+
+.chart-wrap .bar:hover {
+    opacity: 0.7;
+    }
+
+.chart-wrap .bar::after {
+    content: attr(data-name);
+    margin-left: 100%;
+    padding: 10px;
+    display: inline-block;
+    white-space: nowrap;
+}

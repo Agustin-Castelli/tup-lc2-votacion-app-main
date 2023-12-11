@@ -24,18 +24,19 @@
         <div class="menu-bar">
             <ul>
                 <li>
-                    <select class="selects" name="year" id="selectPeriodo">
+                    <select class="selects" name="year" id="selectPeriodo" onchange="seleccionCargo()">
                         <option selected disabled value="0" >Año</option>
 
                     </select>
                 </li>
                 <li>
-                    <select class="selects" name="charge" id="selectCargo">
+                    <select class="selects" name="charge" id="selectCargo" onchange="seleccionDistrito()">
                         <option selected disabled value="0">Cargo</option>
                     </select>
+                    <input type="hidden" id="idSeccionProvincial" name="idSeccionProvincial">
                 </li>
                 <li>
-                    <select class="selects" name="district" id="selectDistrito">
+                    <select class="selects" name="district" id="selectDistrito" onchange="seleccionSeccion()">
                         <option selected disabled value="0">Distrito</option>
                     </select>
                 </li>
@@ -45,10 +46,13 @@
                     </select>
                 </li>
                 <li>
-                    <div class="filtrar-button"> Filtrar <i class="fa-solid fa-magnifying-glass"></i></div>
+                    <button type="button" id="filtrar-btn" onclick="filtrarBtn()">
+                        <div class="filtrar-button">Filtrar<i class="fa-solid fa-magnifying-glass"></i></div>
+                    </button>
                 </li>
                 <li><a class="generales-button" href="generales.html">Generales</a></li>
                 <li><a class="informes-button" href="informes.html">Informes</a></li>
+                <li style="color: gold;" id="mensaje-menu-bar">Debe seleccionar los valores a filtrar y hacer clic en el botón FILTRAR.</li>
             </ul>
             <div class="div-button"><a class="inicio-button" href="index.html">Inicio</a></div>
         </div>
@@ -56,28 +60,27 @@
     <!-- Contenido principal de la página -->
     <main>
         <section id="sec-messages">
-            <div class="success-button">
+            <div class="success-button" hidden>
                 <i class="fa-solid fa-check"></i>
                 <p>Se agregó con éxito el resultado al informe</p>
             </div>
-            <div class="error-button">
+            <div class="error-button" hidden>
                 <i class="fa-solid fa-exclamation-triangle"></i>
                 <p>Error: Se produjo un error al intentar agregar resultados al infome</p>
             </div>
-            <div class="info-button">
+            <div class="info-button" hidden>
                 <i class="fa-solid fa-exclamation"></i>
                 <p>La operacion no se pudo completar</p>
             </div>
         </section>
         <section id="sec-titulo">
             <!--Seccion para agregar una palicula favorita por codigo-->
-            <h2>Elecciones 2021 | PASO</h2>
-            <p class="texto-path">2020 > PASO > Provisorio > Senadores Nacionales > Buenos
-                Aires</p>
+            <h2 id="titulo-paso">Elecciones PASO</h2>
+            <p class="texto-path" id="subtitulo-paso"></p>
         </section>
         <section id="sec-contenido">
             <div id="boton-agregar" style="flex-grow: 3;">
-                <a class="agregar-button">+ Agregar a Informe</a>
+                <a class="agregar-button" onclick="agregarInformeBtn()">+ Agregar a Informe</a>
             </div>
             <div id="mesas_escrutadas_div" style="flex-grow: 0;">
                 <div>
@@ -100,7 +103,7 @@
                 </div>
                 <div>
                     <p><strong>Mesas escrutadas</strong></p>
-                    <p1>62.71%</p1>
+                    <p1 id="contador-mesas-escrutadas"></p1>
                 </div>
             </div>
             <div id="electores_div" style="flex-grow: 0;">
@@ -190,7 +193,7 @@
                 </div>
             <div>
                 <p><strong>Electores</strong></p>
-                <p1>62.71%</p1>
+                <p1 id="contador-electores"></p1>
             </div>
             </div>
             <div id="participacion_div" style="flex-grow: 0;">
@@ -250,118 +253,34 @@
             </div>
             <div>
                 <p><strong>Participacion sobre escrutado</strong></p>
-                <p1>62.71%</p1>
+                <p1 id="contador-participacion-escrutado"></p1>
             </div>
             </div>
         </section>
-        <section id="cuadro_detalle">
+        <section id="cuadro_detalle" hidden>
             <div class="card1">
                 <h3>Agrupaciones politicas</h3>
 
                 <br>
                 <div class="scroll-div">
-                    <h4>Agrupacion 1</h4>
-                    <p>
-                        Votos: 38%
-                        <br>
-                        30000 votos
-                    </p>
-                    <div class="progress" style="background-color: rgb(255, 255, 186);">
-                        <div class="progress-bar" style="width:100%; background: var(--graficaamarillo);">
-                            <span class="progress-bar-text">75%</span>
+                        <div id="lista-agrupaciones">
+                            <!-- CONTENDIO DEL JS -->
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="card2">
-                <h3>Buenos Aires</h3>
+                <h3 id="nombre-mapa">Mapa</h3>
                 <!--Mapas-->
                 <!--//Ciudad Autónoma de Buenos Aires//-->
-                <div class="map">
-                    <svg height="210" width="300">
-                        <path class="leaflet-interactive" stroke="#18a0fb" stroke-opacity="1" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" fill="#18a0fb" fill-opacity="1"
-                            fill-rule="evenodd"
-                            d="M182 61L179 56L176 58L178 56L176 53L173 55L169 47L168 48L164 45L157 43L158 41L155 41L154 36L149 32L148 33L143 29L142 30L145 32L140 29L138 32L137 30L140 29L139 26L137 28L136 23L133 22L130 27L103 41L81 99L82 134L131 179L159 140L168 137L171 139L174 138L181 141L186 137L195 136L200 130L207 125L205 120L210 118L210 112L205 107L210 110L213 114L215 113L215 110L217 110L218 112L219 111L217 109L221 111L224 109L220 106L222 106L221 102L218 102L216 104L215 103L217 102L212 102L220 101L219 95L216 92L214 86L208 81L200 83L199 80L201 79L202 81L200 77L206 75L203 75L203 73L206 73L201 71L205 70L199 69L198 68L202 68L200 66L195 67L194 66L198 65L188 62L192 62L190 60L183 59L189 64L187 65z">
-                        </path>
-                    </svg>
-                </div>
+                <div class="map" id="svg-mapa">
+            </div>
 
             </div>
             <div class="card3">
-                <div class="card3">
-                    <h3>Grafica de barras</h3>
-                    <div class="chart-wrap horizontal">
-                        <div class="title">Resumen de votos</div>
-                        <div class="grid">
-                            <!-- Barra 1 -->
-                            <div class="bar" style="--bar-value:85%;" data-name="Partido 1" title="Your Blog 85%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 2 -->
-                            <div class="bar" style="--bar-value:23%;" data-name="Partido 2" title="Medium 23%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 3 -->
-                            <div class="bar" style="--bar-value:7%;" data-name="Partido 3" title="Tumblr 7%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 4 -->
-                            <div class="bar" style="--bar-value:38%;" data-name="Partido 4" title="Facebook 38%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 5 -->
-                            <div class="bar" style="--bar-value:35%;" data-name="Partido 5" title="YouTube 35%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 6 -->
-                            <div class="bar" style="--bar-value:30%;" data-name="Partido 6" title="LinkedIn 30%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 7 -->
-                            <div class="bar" style="--bar-value:5%;" data-name="Partido 7" title="Twitter 5%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra de "Otros" -->
-                            <div class="bar" style="--bar-value:20%;" data-name="Otros" title="Other 20%">
-                               
-                            </div>
-                        </div>
+                <h3>Grafica de barras</h3>
+                <div class="chart-wrap horizontal">
+                    <div class="title">Resumen de votos</div>
+                    <div class="grid" id="grid" hidden>
                     </div>
                 </div>
             </div>

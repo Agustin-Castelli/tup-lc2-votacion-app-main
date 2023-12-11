@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/dcacde4dce.js" crossorigin="anonymous"></script>
     <script src="js/common.js" defer></script>
+    <!-- <script src="js/mapas.js" defer></script> -->
     <script src="js/pages/generales.js" defer></script>
-    <script type="module" src="js/mapas.js" defer></script>
 </head>
 <body>
     <header>
@@ -60,15 +60,15 @@
     <!-- Contenido principal de la página -->
     <main>
         <section id="sec-messages">
-            <div class="success-button" hidden>
+            <div class="success-button" id="success-button" hidden>
                 <i class="fa-solid fa-thumbs-up"></i>
                 <p>Se agregó con éxito el resultado al informe</p>
             </div>
-            <div class="error-button" hidden>
+            <div class="error-button" id="error-button" hidden>
                 <i class="fa-solid fa-exclamation-triangle"></i>
                 <p>Error: Se produjo un error al intentar agregar resultados al infome</p>
             </div>
-            <div class="info-button" hidden>
+            <div class="info-button" id="info-button" hidden>
                 <i class="fa-solid fa-exclamation"></i>
                 <p>La operacion no se pudo completar</p>
             </div>
@@ -80,7 +80,7 @@
         </section>
         <section id="sec-contenido">
             <div id="boton-agregar" style="flex-grow: 3;">
-                <a class="agregar-button">+ Agregar a Informe</a>
+                <a class="agregar-button" onclick="agregarInformeBtn()">+ Agregar a Informe</a>
             </div>
             <div id="mesas_escrutadas_div" style="flex-grow: 0;">
             <div>
@@ -257,29 +257,19 @@
         </div>
         </div>
         </section>
-        <section id="cuadro_detalle" hidden>
+        <section id="cuadro_detalle">
             <div class="card1">
                 <h3>Agrupaciones politicas</h3>
                 <br>
                 <div class="scroll-div">
-                    <div>
-                        <h4>Agrupacion 1</h4>
-                        <p>
-                            Votos: 38%
-                            <br>
-                            30000 votos
-                        </p>
+                    <div id="lista-agrupaciones">
+                        <h4 id="nombre-agrupacion"></h4>
+                        <p id="votos-agrupacion"></p>
                     </div>
-                    <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                        <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                        <span class="progress-bar-text">75%</span>
-                        </div>
-                        </div>
-                        
-                                </div>
                 </div>
+            </div>
             <div class="card2">
-                <h3 id="nombre-mapa"></h3>
+                <h3 id="nombre-mapa">Mapa</h3>
                 <!--Mapas-->
                 <!--//Ciudad Autónoma de Buenos Aires//-->
                 <div class="map" id="svg-mapa">
@@ -290,74 +280,7 @@
                     <h3>Grafica de barras</h3>
                     <div class="chart-wrap horizontal">
                         <div class="title">Resumen de votos</div>
-                        <div class="grid">
-                            <!-- Barra 1 -->
-                            <div class="bar" style="--bar-value:85%;" data-name="Agrupacion 1" title="Your Blog 85%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">75%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 2 -->
-                            <div class="bar" style="--bar-value:23%;" data-name="Partido 2" title="Medium 23%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 3 -->
-                            <div class="bar" style="--bar-value:7%;" data-name="Partido 3" title="Tumblr 7%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 4 -->
-                            <div class="bar" style="--bar-value:38%;" data-name="Partido 4" title="Facebook 38%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 5 -->
-                            <div class="bar" style="--bar-value:35%;" data-name="Partido 5" title="YouTube 35%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 6 -->
-                            <div class="bar" style="--bar-value:30%;" data-name="Partido 6" title="LinkedIn 30%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra 7 -->
-                            <div class="bar" style="--bar-value:5%;" data-name="Partido 7" title="Twitter 5%">
-                                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                                        <span class="progress-bar-text">15%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Barra de "Otros" -->
-                            <div class="bar" style="--bar-value:20%;" data-name="Otros" title="Other 20%">
-                               
-                            </div>
+                        <div class="grid" id="grid" hidden>
                         </div>
                     </div>
                 </div>

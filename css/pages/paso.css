@@ -256,6 +256,7 @@ strong{
     border: 1px var(--borde-Grilla) solid;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
     min-width: 350px;
+    max-width: 350px;
 }
 
 .card1 h3, .card2 h3, .card3 h3{
@@ -273,20 +274,20 @@ strong{
 
 .scroll-div {
     padding: 20px;
+}
+
+#lista-agrupaciones {
     overflow: scroll;
     overflow-x: hidden;
+    max-height: 300px;
 }
+
 
 .card1 p {
     font-size: 11px;
     color: var(--textos);
     padding: 5px;
     text-transform: uppercase;
-}
-
-.card1 div {
-    display: flex;
-    justify-content: space-between;
 }
 
 
@@ -297,10 +298,11 @@ strong{
     margin-bottom: 15px;
     position: relative;
     margin: 5px 0;
-    background-color: #ccc;
+    background-color: var(--grafica-amarillo-claro);
     }
 .progress-bar {
     height: 100%;
+    width: 75%;
     display: flex;
     align-items: center;
     transition: width 0.25s;
@@ -405,4 +407,10 @@ strong{
     padding: 10px;
     display: inline-block;
     white-space: nowrap;
+}
+
+#grid {
+    padding: 20px;
+    overflow: scroll;
+    max-width: 350px;
 }

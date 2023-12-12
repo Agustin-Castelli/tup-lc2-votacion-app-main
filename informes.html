@@ -29,13 +29,13 @@
                 <li class="texto-consultar">CONSULTAR:</li>
                 <li><a class="paso-button" href="paso.html">PASO</a></li>
                 <li><a class="generales-button" href="generales.html">GENERALES</a></li>
-                <li><a class="inicio-button" href="informes.html">Inicio</a></li>
+                <li><a class="inicio-button" href="index.html">Inicio</a></li>
             </ul>
         </div>
     </header>
     <!-- Contenido principal de la página -->
     <main>
-        <section id="sec-messages">
+        <section id="sec-messages" hidden>
             <div class="success-button">
                 <i class="fas fa-thumbs-up"></i>
                 <p>Se agregó con éxito el resultado al informe</p>
@@ -53,7 +53,7 @@
             <!--Seccion para agregar una palicula favorita por codigo-->
             <h1>Reporte de elecciones</h1>
         </section>
-        <section id="sec-contenido">
+        <section id="sec-contenido" hidden>
             <!--Seccion para contenido de la página-->
             <table class="grilla">
                 <!-- Fila 1: Encabezados de columna -->
@@ -69,18 +69,18 @@
                 <!-- Fila 2: Datos -->
                 <tbody class="fila_datos">
                     <tr>
-                        <td class="columna">
+                        <td class="columna" id="columna-mapa">
                             <!-- Imagen de la provincia -->
                             <svg height="210" width="300"><path class="leaflet-interactive" stroke="#18a0fb" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#18a0fb" fill-opacity="1" fill-rule="evenodd" d="M171 55L163 53L150 45L147 50L143 49L133 60L114 60L114 151L116 151L120 155L122 156L126 153L128 149L124 145L126 143L126 138L128 138L129 133L126 129L126 122L134 126L139 126L169 119L179 114L189 97L190 89L189 87L186 87L182 82L185 75L181 69L171 63L170 64L170 58z"></path></svg>
                         </td>
-                        <td class="columna">
-                            <p class="texto-elecciones-chico">Elecciones 2020 | Generales</p>
-                            <p class="texto-path-chico">2020 > Generales > Provisorio > Senadores
+                        <td class="columna" id="columna-titulo-subtitulo">
+                            <p class="texto-elecciones-chico" id="tabla-titulo-elecciones">Elecciones 2020 | Generales</p>
+                            <p class="texto-path-chico" id="tabla-subtitulo-elecciones">2020 > Generales > Provisorio > Senadores
                             Nacionales > Buenos Aires</p>                            
                         </td>
                         <td class="columna" id="datos-generales">
                             <!-- Datos Generales -->
-                            <div class="mesas_escrutadas">
+                            <div class="mesas_escrutadas" id="tabla-mesas-escrutadas">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 x="0px" y="0px" width="841.889px" height="595.281px" viewBox="0 0 841.889 595.281"
                                 enable-background="new 0 0 841.889 595.281" xml:space="preserve" class="v-icon__component theme--light"
@@ -99,7 +99,7 @@
                                 </svg>
                                 Mesas Computadas: 500
                             </div>
-                            <div class="electores">
+                            <div class="electores" id="tabla-electores">
                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" width="841.889px" height="595.281px" viewBox="0 0 841.889 595.281"
             enable-background="new 0 0 841.889 595.281" xml:space="preserve" class="v-icon__component theme--light"
@@ -184,7 +184,7 @@
         </svg>
                                 Electores: 10000
                             </div>
-                            <div class="participacion">
+                            <div class="participacion" id="tabla-participacion">
                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" width="841.889px" height="595.281px" viewBox="0 0 841.889 595.281"
             enable-background="new 0 0 841.889 595.281" xml:space="preserve" class="v-icon__component theme--light"
@@ -240,10 +240,8 @@
                                 Participación sobre Escrutado: 80%
                             </div>
                         </td>
-                        <td class="grid_datos">
+                        <td class="grid_datos" id="columna-agrupaciones">
                             <!-- Datos por Agrupación -->
-                                <p>Agrupación 1: 40% (500 votos)</p>
-                                <p>Agrupación 2: 30% (300 votos)</p>
                         </td>
                     </tr>
                 </tbody>

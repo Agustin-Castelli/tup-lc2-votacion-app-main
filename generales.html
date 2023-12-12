@@ -52,7 +52,7 @@
                 </li>
                 <li><a class="paso-button" href="paso.html">PASO</a></li>
                 <li><a class="informes-button" href="informes.html">Informes</a></li> 
-                <li style="color: gold;" id="mensaje-menu-bar">Debe seleccionar los valores a filtrar y hacer clic en el botón FILTRAR.</li>
+                <li style="color: gold; font-size: small;" id="mensaje-menu-bar">Debe seleccionar los valores a filtrar y hacer clic en el botón FILTRAR.</li>
             </ul>
             <div class="div-button"><a class="inicio-button" href="index.html">Inicio</a></div>
         </div>
@@ -62,15 +62,15 @@
         <section id="sec-messages">
             <div class="success-button" id="success-button" hidden>
                 <i class="fa-solid fa-thumbs-up"></i>
-                <p>Se agregó con éxito el resultado al informe</p>
+                <p id="p-success-button">Se agregó con éxito el resultado al informe</p>
             </div>
             <div class="error-button" id="error-button" hidden>
                 <i class="fa-solid fa-exclamation-triangle"></i>
-                <p>Error: Se produjo un error al intentar agregar resultados al infome</p>
+                <p id="p-error-button">Error: Se produjo un error al intentar agregar resultados al infome</p>
             </div>
             <div class="info-button" id="info-button" hidden>
                 <i class="fa-solid fa-exclamation"></i>
-                <p>La operacion no se pudo completar</p>
+                <p id="p-info-button">La operacion no se pudo completar</p>
             </div>
         </section>
         <section id="sec-titulo">
@@ -79,10 +79,10 @@
             <p class="texto-path" id="subtitulo-generales"></p>
         </section>
         <section id="sec-contenido">
-            <div id="boton-agregar" style="flex-grow: 3;">
+            <div id="boton-agregar" style="flex-grow: 3;" hidden>
                 <a class="agregar-button" onclick="agregarInformeBtn()">+ Agregar a Informe</a>
             </div>
-            <div id="mesas_escrutadas_div" style="flex-grow: 0;">
+            <div id="mesas_escrutadas_div" style="flex-grow: 0;" hidden>
             <div>
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 x="0px" y="0px" width="841.889px" height="595.281px" viewBox="0 0 841.889 595.281"
@@ -106,7 +106,7 @@
                 <p1 id="contador-mesas-escrutadas"></p1>
             </div>
             </div>
-            <div id="electores_div" style="flex-grow: 0;">
+            <div id="electores_div" style="flex-grow: 0;" hidden>
                 <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" width="841.889px" height="595.281px" viewBox="0 0 841.889 595.281"
@@ -196,7 +196,7 @@
             <p1 id="contador-electores"></p1>
         </div>
         </div>
-            <div id="participacion_div" style="flex-grow: 0;">
+            <div id="participacion_div" style="flex-grow: 0;" hidden>
                 <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" width="841.889px" height="595.281px" viewBox="0 0 841.889 595.281"
@@ -258,7 +258,7 @@
         </div>
         </section>
         <section id="cuadro_detalle">
-            <div class="card1">
+            <div class="card1" id="card1" hidden>
                 <h3>Agrupaciones politicas</h3>
                 <br>
                 <div class="scroll-div">
@@ -268,7 +268,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card2">
+            <div class="card2" id="card2" hidden>
                 <h3 id="nombre-mapa">Mapa</h3>
                 <!--Mapas-->
                 <!--//Ciudad Autónoma de Buenos Aires//-->
@@ -276,7 +276,7 @@
                     
                 </div>
             </div>
-                <div class="card3">
+                <div class="card3" id="card3" hidden>
                     <h3>Grafica de barras</h3>
                     <div class="chart-wrap horizontal">
                         <div class="title">Resumen de votos</div>

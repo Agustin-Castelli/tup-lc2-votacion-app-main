@@ -331,7 +331,7 @@ async function filtrarBtn(){
             const url = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${opcionSeleccionadaAnio}&tipoRecuento=${tipoRecuento}&tipoEleccion=${tipoEleccion}&categoriaId=${opcionSeleccionadaCargo}&distritoId=${opcionSeleccionadaDistrito}&seccionProvincialId=${idSeccionProvincial.value}&seccionId=${opcionSeleccionadaSeccion}&circuitoId=${circuitoId}&mesaId=${mesaId}`
             const respuestaApiDatosFiltrados = await fetch(url);
 
-            //mensajeMenuBar.innerText = ''
+            document.getElementById('mensaje-menu-bar').hidden = true;
 
             if (respuestaApiDatosFiltrados.ok){
                 datosFiltrados = await respuestaApiDatosFiltrados.json();
@@ -348,6 +348,14 @@ async function filtrarBtn(){
                 let subtituloGenerales = document.getElementById('subtitulo-paso');
                 tituloGenerales.innerText = "Elecciones " + opcionSeleccionadaAnio + " | PASO";
                 subtituloGenerales.innerText = opcionSeleccionadaAnio + " > PASO > " + cargo + " > " + distrito + " > " + seccion;
+                
+                document.getElementById('card1').hidden = false;
+                document.getElementById('card2').hidden = false;
+                document.getElementById('card3').hidden = false;
+                document.getElementById('boton-agregar').hidden = false;
+                document.getElementById('mesas_escrutadas_div').hidden = false;
+                document.getElementById('participacion_div').hidden = false;
+                document.getElementById('electores_div').hidden = false;
 
                 await contenidoCuadros();
                 await cardMapa();
@@ -355,7 +363,9 @@ async function filtrarBtn(){
                 await cardGraficaDeBarras();
             }
             else{
-                console.log('Error al obtener los datos de la API.');
+                let mensajeError = 'Error al obtener los datos de la API.';
+                mostrarMensajeRojo(mensajeError);
+                //console.log('Error al obtener los datos de la API.');
             }
             
         }
@@ -364,6 +374,8 @@ async function filtrarBtn(){
 
     catch{
         console.log('Error al ejecutar la función filtrarBtn().');
+        let errorMsg = 'No se pudo obtener información para la consulta realizada.';
+        mostrarMensajeRojo(errorMsg);
     }
     
 }
@@ -383,7 +395,7 @@ async function contenidoCuadros(){
     }
 
     catch{
-        console.log(error);
+        console.log('error contenidoCuadros()');
     }
 }
 
@@ -405,7 +417,7 @@ async function cardMapa() {
     }
 
     catch{
-        console.log(error);
+        console.log('error cardMapa()');
     }
 }
 
@@ -521,15 +533,75 @@ async function cardGraficaDeBarras(){
 
 async function agregarInformeBtn(){
     try{
-        let informeStr = `[${opcionSeleccionadaAnio}|${tipoRecuento}|${tipoEleccion}|${opcionSeleccionadaCargo}|${opcionSeleccionadaDistrito}|${idSeccionProvincial.value}|${opcionSeleccionadaSeccion}|${circuitoId}|${mesaId}]`;
-        let informes = [];
-        informes.push(informeStr);
-        localStorage.setItem("INFORMES", informes);
-        console.log(localStorage.getItem("INFORMES"));
+        let informeActual = localStorage.getItem("INFORMES");
+        console.log(informeActual);
+        let nuevoInforme = `${opcionSeleccionadaAnio}|${tipoRecuento}|${tipoEleccion}|${opcionSeleccionadaCargo}|${opcionSeleccionadaDistrito}|${idSeccionProvincial.value}|${opcionSeleccionadaSeccion}|${circuitoId}|${mesaId}|`;
+
+        if (informeActual === null || informeActual === undefined){
+
+            localStorage.setItem("INFORMES", nuevoInforme);
+            let mensajeExito = 'Se agregó el informe exitosamente';
+            mostrarMensajeVerde(mensajeExito);
+
+        }
+
+        else{
+            let validarInforme = informeActual.split(',');
+
+            if (validarInforme.includes(nuevoInforme)) {
+                let mensajeError = 'El informe seleccionado ya posee un registro existente.';
+                mostrarMensajeAmarillo(mensajeError);
+            }
+            else{
+                informeActual = informeActual + nuevoInforme;
+                localStorage.setItem('INFORMES', informeActual);
+                let mensajeExito = 'Se agregó el informe exitosamente.';
+                mostrarMensajeVerde(mensajeExito);
+            }
+        }
     }
     
     catch{
-        console.log(error);
+        console.log('Error al ejecutar agregarInformeBtn().');
     }
+
 }
 
+
+function mostrarMensajeAmarillo(mensaje){
+
+    let divMensaje = document.getElementById('info-button');
+    let textoMensaje = document.getElementById('p-info-button');
+
+    divMensaje.hidden = false;
+    textoMensaje.innerText = mensaje;
+
+    setTimeout(() => {
+        divMensaje.hidden = true;
+    }, 5000);
+}
+
+
+function mostrarMensajeRojo(mensaje){
+    let divMensaje = document.getElementById('error-button');
+    let textoMensaje = document.getElementById('p-error-button');
+
+    divMensaje.hidden = false;
+    textoMensaje.innerText = mensaje;
+
+    setTimeout(() => {
+        divMensaje.hidden = true;
+    }, 5000);
+}
+
+function mostrarMensajeVerde(mensaje){
+    let divMensaje = document.getElementById('success-button');
+    let textoMensaje = document.getElementById('p-success-button');
+
+    divMensaje.hidden = false;
+    textoMensaje.innerText = mensaje;
+
+    setTimeout(() => {
+        divMensaje.hidden = true;
+    }, 5000);
+}
